@@ -1,18 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Projectile.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Projectile.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 6 )
 
-[node name="Projectile" type="KinematicBody2D"]
+[node name="Projectile" type="Area2D"]
 script = ExtResource( 1 )
-velocity = 200010
+velocity = 4000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 2.44, 1 )
 shape = SubResource( 1 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 5.96046e-07, -6.55651e-07 )
-scale = Vector2( 0.3125, 0.3125 )
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 0.75, 0.1875 )
 texture = ExtResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]

@@ -30,7 +30,7 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Block = load("res://Scenes/TestMap.tscn")
+	Block = load("res://Scenes/Block.tscn")
 	pass # Replace with function body.
 
 

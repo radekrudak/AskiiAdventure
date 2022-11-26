@@ -7,3 +7,7 @@ script = ExtResource( 1 )
 
 [node name="FrontIron" type="Position2D" parent="."]
 position = Vector2( 25, 0 )
+
+[node name="CoolDownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CoolDownTimer" to="." method="_on_CoolDownTimer_timeout"]
