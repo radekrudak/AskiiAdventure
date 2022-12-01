@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GunPointScript.gd" type="Script" id=1]
+[ext_resource path="res://textures/sight.svg" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ShootRecoil"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 0.0625001, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 0.4, 0.4 ), Vector2( 0.25, 0.25 ) ]
+}
 
 [node name="GunPoint" type="Position2D"]
 script = ExtResource( 1 )
@@ -9,5 +27,27 @@ script = ExtResource( 1 )
 position = Vector2( 25, 0 )
 
 [node name="CoolDownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="VisualSightPos" type="Position2D" parent="."]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="VisualSight" type="TextureProgress" parent="VisualSightPos"]
+anchor_right = 0.526
+margin_left = -47.0
+margin_top = -47.0
+margin_right = 330.0
+margin_bottom = 330.0
+rect_scale = Vector2( 0.25, 0.25 )
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_under = Color( 0.470588, 0.470588, 0.470588, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VisualSightPos"]
+root_node = NodePath("../VisualSight")
+anims/ShootRecoil = SubResource( 1 )
 
 [connection signal="timeout" from="CoolDownTimer" to="." method="_on_CoolDownTimer_timeout"]
