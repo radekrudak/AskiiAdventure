@@ -10,8 +10,8 @@ export var slowing_speed = 1.8
 var Block = null
 func _physics_process(delta):
 	
-	look_at(get_global_mouse_position())
-	
+	#look_at(get_global_mouse_position())
+	GunPoint.look_at(get_global_mouse_position())
 	GunPoint.set_VisualSight_global_position(
 		get_global_mouse_position()
 		)

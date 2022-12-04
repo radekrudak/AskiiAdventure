@@ -40,6 +40,8 @@ func shoot_bullet():
 	get_tree().get_root().get_node("Game").add_child( BulletInstance )
 
 	BulletInstance.look_at(FrontIron.get_global_position())
+	
+	BulletInstance.global_position = FrontIron.global_position
 	#resets timer
 	CoolDownTimer.start()
 	isCoolDownEnded = false
