@@ -96,7 +96,7 @@ func _on_ItemSlot_item_set(item_just_equiped):
 			avalible_modes.append(StringToFireMode[i])
 		#print(avalible_modes)
 	set_cool_down(item_just_equiped.get_property("cool_down",1))
-	print (CoolDownTimer.wait_time)
+	
 
 
 func _on_ItemSlot_item_cleared():
